@@ -18,12 +18,26 @@ class MoviesListWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Movies', 
-              style: GoogleFonts.quicksand(
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                color: const Color(0xFF2E2E2E),
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.08),
+                    blurRadius: 8.0,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Text(
+                'Movies', 
+                style: GoogleFonts.quicksand(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                ),
               ),
             ),
           ),

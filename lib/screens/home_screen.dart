@@ -8,12 +8,27 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppbarWidget(),
-
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20),
-          child: MoviesListWidget(),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/Ghibli_sky.webp'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            // AppBar content integrated
+            AppbarWidget(),
+            // Main content
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: MoviesListWidget(),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

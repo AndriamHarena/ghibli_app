@@ -16,8 +16,26 @@ const MovieScreen({super.key, required this.id});
     // print('Movie ID: $id');
 
     return Scaffold(
-      appBar: const AppbarWidget(showBackButton: true),
-      body: SingleChildScrollView(child: MovieWidget(id: id)),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/Ghibli_sky.webp'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Column(
+          children: [
+            // AppBar content integrated
+            const AppbarWidget(showBackButton: true),
+            // Main content
+            Expanded(
+              child: SingleChildScrollView(
+                child: MovieWidget(id: id),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

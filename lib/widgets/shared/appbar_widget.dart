@@ -99,17 +99,6 @@ class _AppbarWidgetState extends State<AppbarWidget>
   Widget build(BuildContext context) {
     return Container(
       height: 80,
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color(0xFF1a1a1a), // Dark black
-            Color(0xFF2d2d2d), // Lighter black
-          ],
-          stops: [0.0, 1.0],
-        ),
-      ),
       child: Stack(
         children: [
           // Twinkling stars
@@ -172,13 +161,13 @@ class _AppbarWidgetState extends State<AppbarWidget>
                       left: 0,
                       top: 0,
                       bottom: 0,
-                      child: IconButton(
-                        icon: const Icon(
+                      child: GestureDetector(
+                        onTap: () => context.go('/'),
+                        child: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
                           size: 24,
                         ),
-                        onPressed: () => context.go('/'),
                       ),
                     ),
                   
@@ -191,10 +180,9 @@ class _AppbarWidgetState extends State<AppbarWidget>
                         return Text(
                           'Studio Ghibli',
                           style: GoogleFonts.quicksand(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.white,
-                            letterSpacing: 1.2,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF2E2E2E),
                           ),
                         );
                       },
@@ -214,11 +202,11 @@ class _AppbarWidgetState extends State<AppbarWidget>
       width: size,
       height: size,
       decoration: BoxDecoration(
-        color: const Color(0xFFA4C3B2).withOpacity(opacity),
+        color: Colors.white.withOpacity(opacity),
         borderRadius: BorderRadius.circular(size / 2),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFFA4C3B2).withOpacity(opacity * 0.5),
+            color: Colors.white.withOpacity(opacity * 0.5),
             blurRadius: size * 2,
             spreadRadius: 0.5,
           ),

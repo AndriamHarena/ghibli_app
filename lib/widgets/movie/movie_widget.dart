@@ -60,8 +60,8 @@ class MovieWidget extends StatelessWidget {
         }
 
         return Container(
-          decoration: const BoxDecoration(
-            color: Color(0xFFFDF6EC), // Studio Ghibli beige background
+          decoration: BoxDecoration(
+            color: Color(0xFFFFFFFF),
           ),
           child: SingleChildScrollView(
             child: Padding(
