@@ -7,7 +7,7 @@
 
 Une application Flutter élégante dédiée à l'univers des films du Studio Ghibli, développée avec une interface utilisateur immersive inspirée de l'esthétique magique des œuvres de Hayao Miyazaki.
 
-## 📋 Description du Projet
+## Description du Projet
 
 Cette application présente une collection complète des films du Studio Ghibli avec une interface utilisateur soignée et moderne. Elle offre une expérience utilisateur fluide pour explorer et découvrir les chefs-d'œuvre de l'animation japonaise.
 
@@ -19,7 +19,7 @@ Cette application présente une collection complète des films du Studio Ghibli 
 - **Navigation Fluide** : Transitions élégantes entre les écrans
 - **Design Responsive** : Interface adaptée pour le web
 
-## 🎨 Caractéristiques Techniques
+## Caractéristiques Techniques
 
 ### Architecture
 - **Pattern MVC** : Séparation claire des responsabilités
@@ -41,7 +41,7 @@ Cette application présente une collection complète des films du Studio Ghibli 
 - **GoRouter** : Gestion de la navigation
 - **Flutter Rating Stars** : Système de notation
 
-## 🚀 Installation et Lancement
+## Installation et Lancement
 
 ### Prérequis
 - Flutter SDK (version 3.0+)
@@ -63,14 +63,14 @@ flutter pub get
 flutter run -d chrome
 ```
 
-## 🌐 Développement Web
+## Développement Web
 
 Cette application a été spécifiquement développée et optimisée pour le web en utilisant :
 - **Plateforme** : Web (JavaScript)
 - **Navigateur de développement** : Google Chrome
 - **Mode de développement** : Sans émulateur, directement sur navigateur
 
-## 📱 Captures d'Écran
+## Captures d'Écran
 
 ### Écran d'Accueil
 - Liste des films avec affiches
@@ -82,17 +82,17 @@ Cette application a été spécifiquement développée et optimisée pour le web
 - Image du film avec proportions respectées
 - Fond blanc pour une meilleure lisibilité
 
-## 🎯 Fonctionnalités Implémentées
+## Fonctionnalités Implémentées
 
-- ✅ **Liste des Films** : Affichage complet avec images et titres
-- ✅ **Détails des Films** : Page dédiée avec toutes les informations
-- ✅ **Navigation** : Transitions fluides entre les écrans
-- ✅ **Design Studio Ghibli** : Esthétique cohérente et immersive
-- ✅ **Responsive Design** : Interface adaptée au web
-- ✅ **Animations** : Effets visuels subtils et élégants
-- ✅ **API Integration** : Récupération des données en temps réel
+- **Liste des Films** : Affichage complet avec images et titres
+- **Détails des Films** : Page dédiée avec toutes les informations
+- **Navigation** : Transitions fluides entre les écrans
+- **Design Studio Ghibli** : Esthétique cohérente et immersive
+- **Responsive Design** : Interface adaptée au web
+- **Animations** : Effets visuels subtils et élégants
+- **API Integration** : Récupération des données en temps réel
 
-## 🏗️ Structure du Projet
+## Structure du Projet
 
 ```
 lib/
@@ -104,26 +104,26 @@ lib/
 └── main.dart        # Point d'entrée de l'application
 ```
 
-## 🎓 Contexte Académique
+## Contexte Académique
 
 **Classe** : DSP4 Archi O24  
 **Projet** : Application mobile Flutter - Studio Ghibli  
 **Objectif** : Développement d'une application cross-platform avec interface utilisateur avancée
 
-## 👨‍💻 Auteur
+## Auteur
 
 **ANDRIAMANANJARA MANDIMBY Harena**  
 Étudiant en Architecture Logicielle  
 Classe DSP4 Archi O24
 
-## 🏷️ Tags
+## Tags
 
 `flutter` `dart` `studio-ghibli` `web-app` `mobile-development` `ui-ux` `animation` `api-integration` `responsive-design` `cross-platform` `dsp4` `archi-o24`
 
-## 📄 Licence
+## Licence
 
 Ce projet est développé à des fins éducatives dans le cadre du cursus DSP4 Archi O24.
 
 ---
 
-*Développé avec ❤️ et inspiré par la magie du Studio Ghibli*
+*Développé avec passion et inspiré par la magie du Studio Ghibli*
