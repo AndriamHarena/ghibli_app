@@ -70,18 +70,6 @@ Cette application a été spécifiquement développée et optimisée pour le web
 - **Navigateur de développement** : Google Chrome
 - **Mode de développement** : Sans émulateur, directement sur navigateur
 
-## Captures d'Écran
-
-### Écran d'Accueil
-- Liste des films avec affiches
-- Fond de ciel Studio Ghibli
-- Interface épurée et moderne
-
-### Écran de Détails
-- Informations complètes du film
-- Image du film avec proportions respectées
-- Fond blanc pour une meilleure lisibilité
-
 ## Fonctionnalités Implémentées
 
 - **Liste des Films** : Affichage complet avec images et titres
