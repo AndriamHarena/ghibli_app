@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:ghibli/screens/home_screen.dart';
 import 'package:ghibli/screens/movie_screen.dart';
 import 'package:go_router/go_router.dart';
@@ -12,16 +13,34 @@ class RouterService {
         GoRoute(
           path: '/', 
           name: 'home',
-          builder: (context, state) => HomeScreen(),
+          pageBuilder: (context, state) => CustomTransitionPage(
+            key: state.pageKey,
+            child: HomeScreen(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            },
+          ),
         ),
 
         GoRoute(
           path: '/movie/:id', 
           name: 'movie',
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             inspect(state.pathParameters['id']);
-            return MovieScreen(id: state.pathParameters['id']);
-          } 
+            return CustomTransitionPage(
+              key: state.pageKey,
+              child: MovieScreen(id: state.pathParameters['id']),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+            );
+          },
         ),
       ],
     );

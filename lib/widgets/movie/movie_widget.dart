@@ -59,23 +59,30 @@ class MovieWidget extends StatelessWidget {
           );
         }
 
-        return Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Colonne de gauche : Image
-              Expanded(
-                flex: 1,
-                child: _buildImageColumn(movie),
+        return Container(
+          decoration: const BoxDecoration(
+            color: Color(0xFFFDF6EC), // Studio Ghibli beige background
+          ),
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Colonne de gauche : Image
+                  Expanded(
+                    flex: 1,
+                    child: _buildImageColumn(movie),
+                  ),
+                  const SizedBox(width: 24),
+                  // Colonne de droite : Informations
+                  Expanded(
+                    flex: 2,
+                    child: _buildInfoColumn(context, movie),
+                  ),
+                ],
               ),
-              const SizedBox(width: 16),
-              // Colonne de droite : Informations
-              Expanded(
-                flex: 2,
-                child: _buildInfoColumn(movie),
-              ),
-            ],
+            ),
           ),
         );
       },
@@ -83,121 +90,118 @@ class MovieWidget extends StatelessWidget {
   }
 
   Widget _buildImageColumn(Movie movie) {
-    return Column(
-      children: [
-        if (movie.image != null)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: Image.network(
-              movie.image!,
-              fit: BoxFit.contain,
-              width: double.infinity,
-              height: 300,
-              errorBuilder: (context, error, stackTrace) => 
-                Container(
-                  height: 300,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(12),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+        child: movie.image != null
+            ? Image.network(
+                movie.image!,
+                fit: BoxFit.contain,
+                width: double.infinity,
+                height: 400,
+                errorBuilder: (context, error, stackTrace) => 
+                  Container(
+                    height: 400,
+                    width: double.infinity,
+                    color: const Color(0xFFF5F5F5),
+                    child: const Icon(
+                      Icons.broken_image, 
+                      size: 60,
+                      color: Color(0xFFA4C3B2),
+                    ),
                   ),
-                  child: const Icon(
-                    Icons.broken_image, 
-                    size: 60,
-                    color: Colors.grey,
-                  ),
+              )
+            : Container(
+                height: 400,
+                width: double.infinity,
+                color: const Color(0xFFF5F5F5),
+                child: const Icon(
+                  Icons.movie, 
+                  size: 60,
+                  color: Color(0xFFA4C3B2),
                 ),
-            ),
-          )
-        else
-          Container(
-            height: 300,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: Colors.grey[300],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Icon(
-              Icons.movie, 
-              size: 60,
-              color: Colors.grey,
-            ),
-          ),
-      ],
+              ),
     );
   }
 
-  Widget _buildInfoColumn(Movie movie) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+  Widget _buildInfoColumn(BuildContext context, Movie movie) {
+    return Container(
+      padding: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 20,
+            offset: const Offset(0, 6),
+            spreadRadius: 0,
+          ),
+        ],
+        border: Border.all(
+          color: Colors.white.withOpacity(0.2),
+          width: 1,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
         // Titre principal
         Text(
           movie.title ?? 'Titre non disponible',
-          style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+            fontSize: 24,
           ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
         ),
         
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         
-        // Titre original
-        if (movie.original_title != null && movie.original_title!.isNotEmpty)
-          Text(
-            'Titre original: ${movie.original_title}',
-            style: const TextStyle(
-              fontSize: 16,
-              fontStyle: FontStyle.italic,
-              color: Colors.grey,
-            ),
-          ),
-        
-        const SizedBox(height: 4),
-        
-        // Titre original romanisé
-        if (movie.original_title_romanised != null && movie.original_title_romanised!.isNotEmpty)
-          Text(
-            'Titre romanisé: ${movie.original_title_romanised}',
-            style: const TextStyle(
-              fontSize: 16,
-              fontStyle: FontStyle.italic,
-              color: Colors.grey,
-            ),
-          ),
-        
-        const SizedBox(height: 16),
+
         
         // Note sous forme d'étoiles
         if (movie.rt_score != null)
           Row(
             children: [
-              const Text(
+              Text(
                 'Note: ',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               RatingStars(
                 value: double.tryParse(movie.rt_score!) != null 
                     ? (double.parse(movie.rt_score!) / 100) * 5 
                     : 0.0,
                 starBuilder: (index, color) => Icon(
-                  Icons.star,
+                  Icons.star_rounded,
                   color: color,
-                  size: 20,
+                  size: 24,
                 ),
                 starCount: 5,
-                starSize: 20,
-                starSpacing: 2,
+                starSize: 24,
+                starSpacing: 3,
                 maxValue: 5,
-                starOffColor: const Color(0xffe7e8ea),
-                starColor: Colors.amber,
-                // showRatingValue: false,
+                starOffColor: const Color(0xFFA4C3B2).withOpacity(0.3),
+                starColor: const Color(0xFFFFC107), // Studio Ghibli amber
               ),
             ],
           ),
+        
+        const SizedBox(height: 16),
+        
+        // Informations techniques
+        if (movie.original_title != null && movie.original_title!.isNotEmpty)
+          _buildInfoRow(context, 'Titre original', movie.original_title!),
+        if (movie.original_title_romanised != null && movie.original_title_romanised!.isNotEmpty)
+          _buildInfoRow(context, 'Romanisation', movie.original_title_romanised!),
+        if (movie.director != null && movie.director!.isNotEmpty)
+          _buildInfoRow(context, 'Réalisateur', movie.director!),
+        if (movie.producer != null && movie.producer!.isNotEmpty)
+          _buildInfoRow(context, 'Producteur', movie.producer!),
+        if (movie.release_date != null && movie.release_date!.isNotEmpty)
+          _buildInfoRow(context, 'Date de sortie', movie.release_date!),
+        if (movie.running_time != null && movie.running_time!.isNotEmpty)
+          _buildInfoRow(context, 'Durée', '${movie.running_time} minutes'),
         
         const SizedBox(height: 16),
         
@@ -206,64 +210,29 @@ class MovieWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Description:',
-                style: TextStyle(
-                  fontSize: 18,
+              Text(
+                'Description :',
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(height: 8),
               Text(
                 movie.description!,
-                style: const TextStyle(
-                  fontSize: 16,
-                  height: 1.5,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  height: 1.4,
                 ),
                 textAlign: TextAlign.justify,
               ),
             ],
           ),
-        
-        const SizedBox(height: 20),
-        
-        // Informations techniques
-        Card(
-          elevation: 2,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'Informations techniques',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                
-                if (movie.director != null && movie.director!.isNotEmpty)
-                  _buildInfoRow('Réalisateur', movie.director!),
-                
-                if (movie.producer != null && movie.producer!.isNotEmpty)
-                  _buildInfoRow('Producteur', movie.producer!),
-                
-                if (movie.release_date != null && movie.release_date!.isNotEmpty)
-                  _buildInfoRow('Date de sortie', movie.release_date!),
-                
-                if (movie.running_time != null && movie.running_time!.isNotEmpty)
-                  _buildInfoRow('Durée', '${movie.running_time} minutes'),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 
-  Widget _buildInfoRow(String label, String value) {
+      ],
+    )
+  );
+}
+
+Widget _buildInfoRow(BuildContext context, String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Row(
@@ -273,18 +242,15 @@ class MovieWidget extends StatelessWidget {
             width: 120,
             child: Text(
               '$label:',
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
                 fontWeight: FontWeight.w500,
-                color: Colors.grey,
               ),
             ),
           ),
           Expanded(
             child: Text(
               value,
-              style: const TextStyle(
-                fontSize: 16,
-              ),
+              style: Theme.of(context).textTheme.bodyLarge,
             ),
           ),
         ],

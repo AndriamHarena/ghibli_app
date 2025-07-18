@@ -37,6 +37,9 @@ dependencies:
   http: ^1.4.0
   go_router: ^16.0.0
   flutter_rating_stars: ^1.1.0
+  google_fonts: ^6.1.0
+  lottie: ^3.1.0
+  flutter_svg: ^2.0.10
 
 dev_dependencies:
   flutter_test:
@@ -72,30 +75,8 @@ flutter:
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
 
-  # To add custom fonts to your application, add a fonts section here,
-  # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
-  # list giving the asset and other descriptors for the font. For
-  # example:
-  fonts:
-      - family: RedditSansCondensed
-        fonts:
-          - asset: assets/fonts/RedditSansCondensed-ExtraLight.ttf
-            weight: 200
-          - asset: assets/fonts/RedditSansCondensed-Light.ttf
-            weight: 300
-          - asset: assets/fonts/RedditSansCondensed-Regular.ttf
-            weight: 400
-          - asset: assets/fonts/RedditSansCondensed-Medium.ttf
-            weight: 500
-          - asset: assets/fonts/RedditSansCondensed-SemiBold.ttf
-            weight: 600
-          - asset: assets/fonts/RedditSansCondensed-Bold.ttf
-            weight: 700
-          - asset: assets/fonts/RedditSansCondensed-ExtraBold.ttf
-            weight: 800
-          - asset: assets/fonts/RedditSansCondensed-Black.ttf
-            weight: 900
+  # Fonts are now handled by Google Fonts package
+  # No need for local font assets since we use Quicksand from Google Fonts
   #
   #   - family: Schyler
   #     fonts:
